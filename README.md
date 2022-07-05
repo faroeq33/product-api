@@ -7,3 +7,8 @@ docker build -t product-api .
 ```bash
 docker run -it --rm --name product-api product-api
 ```
+
+Run api container
+```bash
+docker run -d --name mycontainer -p 80:80 product-api
+```
