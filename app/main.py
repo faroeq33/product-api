@@ -1,15 +1,31 @@
+from typing import List
+
 import uvicorn
-# import yaml
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
-from fastapi import FastAPI
+from . import crud, models, schemas
+from .database import SessionLocal, engine
 
-# with open("settings.yaml") as settings_file:
-#     settings = yaml.safe_load(settings_file)
-# main_parameters = {}
-# if not settings["openapi_console"]:
-#     main_parameters["docs_url"] = None
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# Dependency
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+@app.get("/items/", response_model=List[schemas.Item])
+def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    items = crud.get_items(db, skip=skip, limit=limit)
+    return items
 
 
 @app.get("/")
