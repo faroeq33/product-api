@@ -1,7 +1,6 @@
 import unittest
-from unittest import TestCase
 
-from app.main import get_products, read_root
+from app import get_products, read_root
 
 # sys.path.insert(0, os.path.dirname(__file__))
 

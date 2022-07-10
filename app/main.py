@@ -1,11 +1,10 @@
 from typing import List
-
 import uvicorn
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 
-from . import crud, models, schemas
-from .database import SessionLocal, engine
+from app.utils import crud, models, schemas
+from app.utils.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
