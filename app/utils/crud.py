@@ -25,7 +25,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
-def get_items(db: Session, skip: int = 0, limit: int = 100):
+def get_items(db: Session, skip: int = 0, limit: int = 100) -> object:
     return db.query(models.Item).offset(skip).limit(limit).all()
 
 

@@ -1,10 +1,12 @@
 from typing import List
+
 import uvicorn
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 
-from app.utils import crud, models, schemas
-from app.utils.database import SessionLocal, engine
+from utils import crud, models, schemas
+from utils.crud import get_items
+from utils.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -35,6 +37,7 @@ def read_root():
 @app.get("/products")
 def get_products():
 
+    return get_items(Session)
     return {
         "test": "testmessage",
         "test2": "testmessage2",
