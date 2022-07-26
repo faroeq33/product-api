@@ -12,6 +12,7 @@ pyyaml = "==6.0"
 pydantic = "~=1.9.1"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.8"
