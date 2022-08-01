@@ -10,9 +10,13 @@ uvicorn = "==0.17.6"
 sqlalchemy = "~=1.4.39"
 pyyaml = "==6.0"
 pydantic = "~=1.9.1"
+ujson = "*"
+alembic = "*"
 
 [dev-packages]
-autopep8 = "*"
+autopep8 = "==1.6.0"
+pytest = "==7.1.2"
+pytest-testmon = "*"
 
 [requires]
 python_version = "3.8"

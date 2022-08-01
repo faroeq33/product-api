@@ -3,18 +3,24 @@ from typing import List, Union
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
-    title: str
-    description: Union[str, None] = None
+class ProductBase(BaseModel):
+    brand: str
+    name: str
+    price: float
+
+    class Config:
+        orm_mode = True
 
 
-class ItemCreate(ItemBase):
-    pass
-
-
-class Item(ItemBase):
+class Product(ProductBase):
     id: int
-    owner_id: int
+    # owner_id: int
+
+
+
+
+class ProductCreate(ProductBase):
+    pass
 
     class Config:
         orm_mode = True
@@ -31,7 +37,7 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     is_active: bool
-    items: List[Item] = []
+    products: List[Product] = []
 
     class Config:
         orm_mode = True
