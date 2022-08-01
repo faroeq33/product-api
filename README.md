@@ -1,3 +1,14 @@
+# Create virtual environment
+```bash
+pipenv shell
+```
+
+# Execute migration
+```bash
+alembic upgrade head
+```
+
+## Docker
 You can then build and run the Docker image:
 
 ```bash
