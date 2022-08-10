@@ -16,7 +16,7 @@ alembic = "*"
 [dev-packages]
 autopep8 = "==1.6.0"
 pytest = "==7.1.2"
-pytest-testmon = "*"
+pytest-watch = "*"
 
 [requires]
 python_version = "3.8"

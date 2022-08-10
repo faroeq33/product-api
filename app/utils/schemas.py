@@ -16,9 +16,6 @@ class Product(ProductBase):
     id: int
     # owner_id: int
 
-
-
-
 class ProductCreate(ProductBase):
     pass
 

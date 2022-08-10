@@ -1,12 +1,10 @@
 from typing import List
-from urllib import response
 
 import uvicorn
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 
 from utils import crud, models, schemas
-# from utils.crud import get_products
 from utils.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
@@ -22,6 +20,11 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+@app.get("/products/", response_model=List[schemas.Product])
+def get_all_products(db: Session = Depends(get_db)):
+    return crud.get_products(db)
 
 
 @app.post("/create/product/", response_model=schemas.Product)

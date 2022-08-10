@@ -1,3 +1,4 @@
+from pyexpat import model
 from sqlalchemy.orm import Session
 
 from utils import models, schemas
@@ -33,12 +34,12 @@ from utils import models, schemas
 #     return db_user
 
 
-# def get_products(db: Session, skip: int = 0, limit: int = 100) -> object:
-#     return db.query(models.Product).offset(skip).limit(limit).all()
+def get_products(db: Session, skip: int = 0, limit: int = 1000) -> object:
+    return db.query(models.Product).offset(skip).limit(limit).all()
 
 
 def create_user_product(db: Session, product: schemas.ProductCreate):
-    db_product = models.Product(**product.dict())
+    db_product = models.Product(**product)
     db.add(db_product)
     db.commit()
     db.refresh(db_product)

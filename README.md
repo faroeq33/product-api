@@ -1,3 +1,7 @@
+# Start app
+```bash
+python app/main.py
+```
 # Create virtual environment
 ```bash
 pipenv shell
