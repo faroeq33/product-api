@@ -6,6 +6,7 @@ from tests.helpers.testdatahelper import insert_test_data
 
 def test_create_products():
     baseurl = "http://localhost:8000"
+
     product = {
         "brand": "Lunatics",
         "name": "Mempalam",

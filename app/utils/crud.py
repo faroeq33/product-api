@@ -39,7 +39,7 @@ def get_products(db: Session, skip: int = 0, limit: int = 1000) -> object:
 
 
 def create_user_product(db: Session, product: schemas.ProductCreate):
-    db_product = models.Product(**product)
+    db_product = models.Product(**product.dict())
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
